@@ -1,6 +1,6 @@
 class Admin::CommentsController < ApplicationController
   def index
-    @pending_comments = Comment.pending
+    @comments = Comment.includes(:book).order(created_at: :desc)
   end
 
   def update

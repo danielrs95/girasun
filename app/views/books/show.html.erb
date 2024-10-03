@@ -14,10 +14,5 @@
 <% end %>
 
 <h3>Añadir un comentario</h3>
-<%= form_for [@book, Comment.new] do |f| %>
-  <div>
-    <%= f.label :content, "Comentario" %>
-    <%= f.text_area :content %>
-  </div>
-  <%= f.submit "Enviar comentario" %>
-<% end %>
+<%= render 'comments/form', book: @book %>
+
