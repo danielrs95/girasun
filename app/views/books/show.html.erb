@@ -1,2 +1,23 @@
 <h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1><%= @book.title %></h1>
+<p><strong>Autor:</strong> <%= @book.author %></p>
+<p><strong>Descripción:</strong> <%= @book.description %></p>
+
+<%= link_to 'Editar', edit_book_path(@book) %> |
+<%= link_to 'Volver a la lista', books_path %>
+
+<h2>Comentarios aprobados</h2>
+<% @book.comments.approved.each do |comment| %>
+  <div>
+    <p><%= comment.content %></p>
+  </div>
+<% end %>
+
+<h3>Añadir un comentario</h3>
+<%= form_for [@book, Comment.new] do |f| %>
+  <div>
+    <%= f.label :content, "Comentario" %>
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit "Enviar comentario" %>
+<% end %>

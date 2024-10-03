@@ -1,2 +1,6 @@
 <h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h1>Añadir nuevo libro</h1>
+
+<%= render 'form', book: @book %>
+
+<%= link_to 'Volver a la lista', books_path %>
