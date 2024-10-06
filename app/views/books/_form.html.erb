@@ -19,10 +19,23 @@
     <%= form.label :author %>
     <%= form.text_field :author %>
   </div>
-
   <div>
     <%= form.label :description %>
     <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year, in: 1..Time.current.year %>
+  </div>
+
+  <div>
+    <%= form.label :historic_context %>
+    <%= form.text_area :historic_context %>
+  </div>
+  <div>
+    <%= form.label :author_details %>
+    <%= form.text_area :author_details %>
   </div>
 
   <div>
