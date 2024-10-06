@@ -8,6 +8,10 @@
     <tr>
       <th>Título</th>
       <th>Autor</th>
+      <th>Ano</th>
+      <th>Breve resumen</th>
+      <th>Contexto Historico</th>
+      <th>Breve resumen del autor</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -16,10 +20,14 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
+        <td><%= book.year %></td>
+        <td><%= book.description %></td>
+        <td><%= book.historic_context %></td>
+        <td><%= book.author_details %></td>
         <td>
           <%= link_to 'Ver', book_path(book) %>
           <%= link_to 'Editar', edit_book_path(book) %>
-          <%= link_to 'Eliminar', book_path(book), method: :delete, data: { confirm: '¿Estás seguro?' } %>
+          <%= button_to 'Eliminar', book_path(book), method: :delete, data: { turbo_confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>

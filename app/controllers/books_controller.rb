@@ -34,8 +34,16 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
-    redirect_to books_url, notice: 'El libro fue eliminado exitosamente.'
+    @book = Book.find(params[:id])
+
+    Book.transaction do
+      @book.comments.destroy_all
+      @book.destroy
+    end
+
+    redirect_to books_path, notice: 'El libro ha sido eliminado exitosamente.'
+  rescue ActiveRecord::InvalidForeignKey
+    redirect_to books_path, alert: 'No se pudo eliminar el libro debido a registros asociados.'
   end
 
   private
