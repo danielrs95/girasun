@@ -1,0 +1,44 @@
+// app/assets/stylesheets/pages/_books.scss
+
+.books-index {
+  .page-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .book-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+
+    .book-title {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-author {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-description {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .book-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
