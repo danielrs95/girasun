@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   # devise_for :users
-  root 'posts#index'
+  root 'books#index'
 
   resources :posts # Esto genera todas las rutas CRUD para posts
 
