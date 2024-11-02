@@ -8,15 +8,13 @@
   <div class="book-list">
     <% @books.each do |book| %>
       <div class="book-card">
-        <h2 class="book-title"><%= book.title %></h2>
+        <h2 class="book-title"><%= link_to book.title, book_path(book)  %></h2>
         <p class="book-author"><%= book.author %> (<%= book.year %>)</p>
         <div class="book-description"><%= truncate(book.description, length: 150) %></div>
         <p class="book-context"><strong>Contexto histórico:</strong> <%= truncate(book.historic_context, length: 100) %></p>
         <p class="book-author-details"><strong>Sobre el autor:</strong> <%= truncate(book.author_details, length: 100) %></p>
         <div class="book-actions">
-          <%= link_to 'Ver', book_path(book), class: 'btn btn-info' %>
-          <%= link_to 'Editar', edit_book_path(book), class: 'btn btn-warning' %>
-          <%= button_to 'Eliminar', book_path(book), method: :delete, data: { turbo_confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %>
+          <%= link_to 'Editar', edit_book_path(book), class: 'btn btn-warning' if user_signed_in? %>
         </div>
       </div>
     <% end %>

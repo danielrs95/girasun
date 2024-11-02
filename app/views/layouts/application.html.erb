@@ -15,10 +15,8 @@
       <main class="main-content">
         <div class="user-navigation">
           <% if user_signed_in? %>
-            <span>Bienvenido <%= current_user.email %></span>
+            <span>Bienvenida Dahicitap</span>
             <%= button_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'btn btn-outline' %>
-          <% else %>
-            <%= link_to 'Iniciar Sesión', new_user_session_path, class: 'btn btn-primary' %>
           <% end %>
         </div>
         <%= yield %>
