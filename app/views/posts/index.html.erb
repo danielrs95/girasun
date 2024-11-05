@@ -1,2 +1,19 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="books-index">
+  <h1 class="page-title">Posts</h1>
+
+  <div class="actions">
+    <%= link_to 'Añadir nuevo post', new_post_path, class: 'btn btn-primary' if user_signed_in? %>
+  </div>
+
+  <div class="post-list">
+    <% @posts.each do |post| %>
+      <div class="post-card">
+        <h2 class="post-title"><%= link_to post.title, post_path(post)  %></h2>
+        <div class="post-description"><%= truncate(post.content, length: 150) %></div>
+        <div class="post-actions">
+          <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-warning' if user_signed_in? %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

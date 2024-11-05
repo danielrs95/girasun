@@ -2,7 +2,7 @@
   <h1 class="page-title">Biblioteca</h1>
 
   <div class="actions">
-    <%= link_to 'Añadir nuevo libro', new_book_path, class: 'btn btn-primary' %>
+    <%= link_to 'Añadir nuevo libro', new_book_path, class: 'btn btn-primary' if user_signed_in? %>
   </div>
 
   <div class="book-list">
