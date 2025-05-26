@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Girasun - Panel de Administración</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-layout">
+    <div class="container">
+      <header class="admin-header">
+        <h1>Panel de Administración - Girasun</h1>
+        <nav class="admin-nav">
+          <ul>
+            <li><%= link_to 'Dashboard', admin_root_path %></li>
+            <li><%= link_to 'Comentarios', admin_comments_path %></li>
+            <li><%= link_to 'Volver al sitio', root_path %></li>
+            <li><%= button_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'btn btn-outline' %></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="admin-content">
+        <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
+        <% if alert %><div class="alert alert-danger"><%= alert %></div><% end %>
+
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>

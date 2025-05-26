@@ -16,6 +16,9 @@
         <div class="user-navigation">
           <% if user_signed_in? %>
             <span>Bienvenida Dahicitap</span>
+            <% if current_user.admin? %>
+              <%= link_to 'Panel de Administración', admin_root_path, class: 'admin-link' %>
+            <% end %>
             <%= button_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'btn btn-outline' %>
           <% end %>
         </div>

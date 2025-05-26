@@ -70,6 +70,43 @@ h3 {
   padding: 2rem 0;
 }
 
+// Navegación de usuario
+.user-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+
+  span {
+    margin-right: 1rem;
+  }
+
+  .admin-link {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #343a40;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: #23272b;
+    }
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #333;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.05);
+    }
+  }
+}
+
 // Formularios
 form {
   .field {

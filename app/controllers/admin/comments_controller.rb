@@ -1,6 +1,4 @@
-class Admin::CommentsController < ApplicationController
-  before_action :require_admin
-
+class Admin::CommentsController < Admin::BaseController
   def index
     @comments = Comment.includes(:book).order(created_at: :desc)
   end

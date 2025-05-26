@@ -1,27 +1,37 @@
-<h1>Admin::Comments#index</h1>
+<div class="admin-comments">
+  <h2>Gestión de Comentarios</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Libro</th>
-      <th>Contenido</th>
-      <th>Estado</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @comments.each do |comment| %>
+  <table class="admin-table">
+    <thead>
       <tr>
-        <td><%= comment.book.title %></td>
-        <td><%= comment.content %></td>
-        <td><%= comment.status %></td>
-        <td>
-          <%= form_with(model: [:admin, comment], local: true) do |form| %>
-            <%= form.select :status, Comment.statuses.keys %>
-            <%= form.submit "Actualizar" %>
-          <% end %>
-        </td>
+        <th>Libro</th>
+        <th>Contenido</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr class="comment-row <%= comment.status %>">
+          <td><%= link_to comment.book.title, book_path(comment.book) %></td>
+          <td><%= comment.content %></td>
+          <td><%= comment.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+          <td>
+            <span class="status-badge <%= comment.status %>">
+              <%= comment.status.capitalize %>
+            </span>
+          </td>
+          <td>
+            <%= form_with(model: [:admin, comment], local: true, class: "status-form") do |form| %>
+              <div class="form-group">
+                <%= form.select :status, Comment.statuses.keys.map { |k| [k.capitalize, k] }, {}, class: "status-select" %>
+                <%= form.submit "Actualizar", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

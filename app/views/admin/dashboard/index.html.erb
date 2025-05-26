@@ -1,0 +1,23 @@
+<div class="admin-dashboard">
+  <h2>Dashboard</h2>
+
+  <div class="stats-cards">
+    <div class="stat-card">
+      <h3>Libros</h3>
+      <div class="stat-value"><%= @total_books %></div>
+      <div class="stat-action"><%= link_to 'Gestionar libros', books_path %></div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Comentarios</h3>
+      <div class="stat-value"><%= @total_comments %></div>
+      <div class="stat-action"><%= link_to 'Gestionar comentarios', admin_comments_path %></div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Comentarios pendientes</h3>
+      <div class="stat-value"><%= @pending_comments %></div>
+      <div class="stat-action"><%= link_to 'Revisar pendientes', admin_comments_path %></div>
+    </div>
+  </div>
+</div>

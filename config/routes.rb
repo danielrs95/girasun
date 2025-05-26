@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'dashboard#index'
     resources :comments, only: %i[index update] # Rutas del admin para comentarios
   end
 
