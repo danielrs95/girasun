@@ -1,0 +1,22 @@
+databases:
+  - name: girasun_postgres
+    databaseName: girasun_production
+    user: girasun
+    plan: free
+
+services:
+  - type: web
+    name: girasun
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: girasun_postgres
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: APPLICATION_HOST
+        value: girasun.onrender.com

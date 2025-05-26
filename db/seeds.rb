@@ -59,3 +59,5 @@ books_data.each do |book_data|
 end
 
 puts "Se han creado #{Book.count} libros en la base de datos."
+
+User.create!(email: 'admin@dahia.com', password: 'dahicitap123', admin: true)
