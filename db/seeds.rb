@@ -1,5 +1,5 @@
 # This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
+# development, test). The code should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # Example:
@@ -54,10 +54,19 @@ books_data = [
   }
 ]
 
+# Crear libros solo si no existen
 books_data.each do |book_data|
-  Book.create!(book_data)
+  Book.find_or_create_by!(title: book_data[:title], author: book_data[:author]) do |book|
+    book.year = book_data[:year]
+    book.description = book_data[:description]
+    book.historic_context = book_data[:historic_context]
+    book.author_details = book_data[:author_details]
+  end
 end
 
-puts "Se han creado #{Book.count} libros en la base de datos."
+# Crear admin solo si no existe
+unless User.exists?(email: 'admin@dahia.com')
+  User.create!(email: 'admin@dahia.com', password: 'dahicitap123', admin: true)
+end
 
-User.create!(email: 'admin@dahia.com', password: 'dahicitap123', admin: true)
+puts "Seed completado. Hay #{Book.count} libros y #{User.count} usuarios en la base de datos."
