@@ -17,4 +17,4 @@ services:
           name: girasun_postgres
           property: connectionString
       - key: APPLICATION_HOST
-        value: girasun.onrender.com
+        value: girasun.com
