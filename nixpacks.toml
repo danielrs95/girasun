@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ['postgresql', 'libpq']
+
+[phases.install]
+cmds = [
+  'bundle install'
+]
+
+[phases.build]
+cmds = [
+  './bin/railway-build.sh'
+]
+
+[start]
+cmd = 'bundle exec puma -C config/puma.rb'
